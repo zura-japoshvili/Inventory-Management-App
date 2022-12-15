@@ -5,6 +5,7 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const userRoute = require("./Routes/userRoutes");
 const errorHandler = require("./middleWare/errorMiddleware");
+const cookieParser = require("cookie-parser");
 
 
 const app = express();
