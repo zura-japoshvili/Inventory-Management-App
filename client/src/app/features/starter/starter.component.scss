@@ -1,0 +1,55 @@
+main{
+  width: 100%;
+  min-height: 100vh;
+  background-color: #01016b;
+  header{
+    height: 80px;
+    width: 100%;
+    margin-bottom: 80px;
+    nav{
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 80px;
+      button{
+        height: 40px;
+        color: #ffff;
+        margin-right: 5px;
+        cursor: pointer;
+        padding: 5px 8px;
+        border: none;
+      }
+      .login-btn{
+        background-color: #1111dc;
+        border-radius: 8px;
+      }
+      .reg-btn{
+        background-color: rgba(1, 1, 107, 0);
+      }
+    }
+  }
+  .starter-cont{
+    display: flex;
+    justify-content: center;
+    .left{
+      margin-right: 20px;
+      h2{
+        color: white;
+        font-size: 50px;
+        margin-top: 30px;
+      }
+      h5{
+        color: white;
+        font-size: 20px;
+      }
+    }
+    .right{
+      img{
+        width: 400px;
+        height: 400px;
+        box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
+      }
+    }
+  }
+}
