@@ -1,0 +1,26 @@
+<form method="post" [formGroup]="regForm">
+  <h2>Registration</h2>
+  <i class="fa-regular fa-user"></i>
+  <div class="field">
+    <label for="email" class="block">Email</label>
+    <input formControlName="email" id="email" type="email" placeholder="exaple@mail.com" pInputText />
+    <small class="p-error block">Email is not available.</small>
+  </div>
+  <div class="field">
+    <label class="block">Full name</label>
+    <input formControlName="name" id="name" type="name" placeholder="William Shakespeare" pInputText />
+    <small class="p-error block">Email is not available.</small>
+  </div>
+  <div class="field">
+    <label for="password" class="block">Password</label>
+    <input formControlName="password" id="password" type="password" pInputText />
+    <small class="p-error block">Email is not available.</small>
+  </div>
+  <div class="field">
+    <label for="re_password" class="block">Repeat Password</label>
+    <input formControlName="re_password" id="re_password" type="password" pInputText />
+    <small class="p-error block">Email is not available.</small>
+  </div>
+  <p-button (click)="onRegister()" label="Submit" icon="pi pi-check" iconPos="right"></p-button>
+</form>
+
