@@ -34,7 +34,7 @@ const registerUser = AsyncHandler( async (req, res) => {
         password,
     });
 
-    // Generate web token
+    // Generate web tokenws
     const token = generateToken(newUser._id);
 
     // Send HTTP-only cookie
@@ -65,7 +65,6 @@ const registerUser = AsyncHandler( async (req, res) => {
 })
 
 // Login User
-
 const loginUser = AsyncHandler( async (req, res) => {
     const {email, password} = req.body;
     if (!email || !password){
@@ -82,8 +81,20 @@ const loginUser = AsyncHandler( async (req, res) => {
     // now the user is found, then we check if the password is correct
     const checkPassword = await bcrypt.compare(password, user.password);
 
+    //   Generate Token
+    const token = generateToken(user._id);
+
+    // Send HTTP-only cookie
+    res.cookie("token", token, {
+        path: "/",
+        httpOnly: true,
+        expires: new Date(Date.now() + 1000 * 86400), // 1 day
+        sameSite: "none",
+        secure: true,
+    });
+
     if (user && checkPassword) {
-        const {_id, name, email, password, photo, bio, phone } = newUser;
+        const {_id, name, email, password, photo, bio, phone } = user;
         res.status(200).json({
             _id,
             name,
@@ -135,6 +146,7 @@ const getUser = AsyncHandler(async (req, res) => {
 
 const loginStatus = AsyncHandler( async (req, res) => {
     const token = req.cookies.token;
+    console.log(token)
     if(!token) {
         return res.json(false);
     }

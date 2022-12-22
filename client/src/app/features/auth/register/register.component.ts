@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserAuthService} from "../../../core/services/user-auth.service";
+import {RegistrationInt} from "../../../core/interfaces/registrationInt";
 
 @Component({
   selector: 'app-register',
@@ -13,6 +14,7 @@ export class RegisterComponent implements OnInit {
   constructor(private _userAuth: UserAuthService) { }
 
   ngOnInit(): void {
+    this._userAuth.checkStatus();
   }
 
   public regForm =  new FormGroup(
@@ -25,6 +27,8 @@ export class RegisterComponent implements OnInit {
   )
 
   public onRegister(){
-    console.log(this.regForm.value)
+    this._userAuth.userRegistration(this.regForm.value as RegistrationInt).subscribe((value) => {
+      console.log(value);
+    })
   }
 }

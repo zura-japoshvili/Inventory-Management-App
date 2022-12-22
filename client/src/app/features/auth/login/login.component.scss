@@ -1,3 +1,31 @@
 form{
-  padding: 15px;
+  padding: 30px;
+  width: 30vw;
+  border-radius: 8px;
+  background-color: #504533;
+  box-shadow: 14px 10px 23px 0px rgba(0,0,0,0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2{
+    color: #ffff;
+    margin-bottom: 10px;
+  }
+  i{
+    font-size: 50px;
+    color: #309d3f;
+    margin-bottom: 15px;
+  }
+  input{
+    background-color: #a7f6e0;
+  }
+  div{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    width: 80%;
+    label{
+      color: #ffff;
+    }
+  }
 }
