@@ -11,6 +11,8 @@ import {DividerModule} from "primeng/divider";
 import {InputTextModule} from "primeng/inputtext";
 import {ButtonModule} from 'primeng/button';
 import {ReactiveFormsModule} from "@angular/forms";
+import {MessageModule} from "primeng/message";
+import {MessagesModule} from 'primeng/messages';
 
 
 
@@ -20,31 +22,33 @@ import {ReactiveFormsModule} from "@angular/forms";
     AuthComponent,
     RegisterComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild([{
-      path: '', redirectTo: '/auth/login', pathMatch: "full"
-    },
-      {
-        path: '', component: AuthComponent,
-        children: [
-          {
-            path: 'login',
-            component: LoginComponent
-          },
-          {
-            path: 'register',
-            component: RegisterComponent
-          }
-        ]
-      },
-    ]),
-    PaginatorModule,
-    PasswordModule,
-    DividerModule,
-    InputTextModule,
-    ButtonModule,
-    ReactiveFormsModule,
-  ]
+    imports: [
+        CommonModule,
+        RouterModule.forChild([{
+            path: '', redirectTo: '/auth/login', pathMatch: "full"
+        },
+            {
+                path: '', component: AuthComponent,
+                children: [
+                    {
+                        path: 'login',
+                        component: LoginComponent
+                    },
+                    {
+                        path: 'register',
+                        component: RegisterComponent
+                    }
+                ]
+            },
+        ]),
+        PaginatorModule,
+        PasswordModule,
+        DividerModule,
+        InputTextModule,
+        ButtonModule,
+        ReactiveFormsModule,
+        MessageModule,
+        MessagesModule,
+    ]
 })
 export class AuthModule { }

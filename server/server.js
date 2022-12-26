@@ -37,13 +37,13 @@ app.use(
     })
 )
 
+// Routes Middleware
+app.use("/api/users/", userRoute);
+
 
 
 // Error Middleware
 app.use(errorHandler);
-
-// Routes Middleware
-app.use("/api/users/", userRoute);
 
 // Routes
 app.get("/" , (req, res) => {

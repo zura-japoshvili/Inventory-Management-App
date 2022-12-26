@@ -22,10 +22,8 @@ export class UserAuthService {
     return this.http.post<FullUserData>("http://localhost:8000/api/users/register", {name, email, password});
   }
 
-  public userLogin(userData: LoginInt){
-    this.http.post("http://localhost:8000/api/users/login", userData, this.httpsOptions).subscribe((value) => {
-
-    })
+  public userLogin(userData: LoginInt): Observable<FullUserData>{
+    return this.http.post<FullUserData>("http://localhost:8000/api/users/login", userData, this.httpsOptions)
   }
 
   public checkStatus(){
