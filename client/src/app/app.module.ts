@@ -6,19 +6,22 @@ import { StarterComponent } from './features/starter/starter.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { NavigationComponent } from './shared/navigation/navigation.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { ProductComponent } from './features/product/product.component';
 import {MessagesModule} from "primeng/messages";
+import {NavigationComponent} from "./shared/navigation/navigation.component";
+import {PanelMenuModule} from "primeng/panelmenu";
+import {RippleModule} from "primeng/ripple";
+import {ButtonModule} from "primeng/button";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     StarterComponent,
-    NavigationComponent,
     DashboardComponent,
     ProductComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,10 @@ import {MessagesModule} from "primeng/messages";
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MessagesModule
+    MessagesModule,
+    PanelMenuModule,
+    RippleModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

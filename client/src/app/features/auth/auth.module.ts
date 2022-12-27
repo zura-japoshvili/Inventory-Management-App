@@ -13,6 +13,8 @@ import {ButtonModule} from 'primeng/button';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MessageModule} from "primeng/message";
 import {MessagesModule} from 'primeng/messages';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 
@@ -20,7 +22,9 @@ import {MessagesModule} from 'primeng/messages';
   declarations: [
     LoginComponent,
     AuthComponent,
-    RegisterComponent
+    RegisterComponent,
+    ForgetPasswordComponent,
+    ResetPasswordComponent
   ],
     imports: [
         CommonModule,
@@ -37,6 +41,14 @@ import {MessagesModule} from 'primeng/messages';
                     {
                         path: 'register',
                         component: RegisterComponent
+                    },
+                    {
+                      path: 'forgetPassword',
+                      component: ForgetPasswordComponent
+                    },
+                    {
+                      path: 'resetPassword/:resetToken',
+                      component: ResetPasswordComponent
                     }
                 ]
             },

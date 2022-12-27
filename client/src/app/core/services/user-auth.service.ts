@@ -4,6 +4,7 @@ import {RegistrationInt} from "../interfaces/registrationInt";
 import {Observable} from "rxjs";
 import {FullUserData} from "../interfaces/fullUserData";
 import {LoginInt} from "../interfaces/loginInt";
+import {ForgetPswdInt} from "../interfaces/forgetPswdInt";
 
 @Injectable({
   providedIn: 'root'
@@ -26,9 +27,16 @@ export class UserAuthService {
     return this.http.post<FullUserData>("http://localhost:8000/api/users/login", userData, this.httpsOptions)
   }
 
-  public checkStatus(){
-    this.http.get("http://localhost:8000/api/users/loginStatus", this.httpsOptions).subscribe((value) => {
-      console.log(value);
-    })
+  public checkStatus(): Observable<boolean>{
+    return this.http.get<boolean>("http://localhost:8000/api/users/loginStatus", this.httpsOptions)
+  }
+
+  public forgetPassword(email: string): Observable<ForgetPswdInt>{
+    console.log(email)
+    return this.http.post<ForgetPswdInt>("http://localhost:8000/api/users/forgetPassword", {email});
+  }
+
+  public resetPassword(newPass: string, Token: string): Observable<{message: string}>{
+    return this.http.put<{message: string}>("http://localhost:8000/api/users/resetPassword/"+ Token , {password: newPass});
   }
 }

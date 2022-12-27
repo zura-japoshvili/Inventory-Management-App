@@ -215,6 +215,8 @@ const changePassword = AsyncHandler( async (req, res) => {
 
 const forgetPassword = AsyncHandler(async (req, res) => {
     const {email} = req.body;
+    console.log(email)
+    console.log(req.body)
     const user = await User.findOne({email});
 
     if (!user){
@@ -235,7 +237,7 @@ const forgetPassword = AsyncHandler(async (req, res) => {
     }).save();
 
     // Construct Reset URL
-    const resetURl = `${process.env.FRONTEND_URl}/resetPassword/${resetToken}`;
+    const resetURl = `${process.env.FRONTEND_URl}/auth/resetPassword/${resetToken}`;
 
     // Reset Email
     const message = `
@@ -253,7 +255,7 @@ const forgetPassword = AsyncHandler(async (req, res) => {
 
     try{
         await sendEmail(subject, message, send_to, sent_from);
-        res.status(200).json({success: true, message: "Reset Email Sent"});
+        res.status(200).json({success: true, message: "A password reset link has been sent to your email, please check it."});
 
     }catch (e) {
         res.status(500);
@@ -265,6 +267,7 @@ const resetPassword = AsyncHandler(async (req, res) => {
     const {password} = req.body;
     const {resetToken} = req.params;
 
+    console.log(1312312)
     const hashedToken = crypto.createHash("sha256").update(resetToken).digest("hex");
 
     const userToken = await Token.findOne({
@@ -273,6 +276,7 @@ const resetPassword = AsyncHandler(async (req, res) => {
     });
 
     if (!userToken){
+        console.log(123)
         res.status(404);
         throw new Error("Invalid or expired token");
     }

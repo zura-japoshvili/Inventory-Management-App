@@ -7,12 +7,11 @@
   <div class="field">
     <label for="email" class="block">Email</label>
     <input formControlName="email" id="email" type="email" placeholder="example@mail.com" pInputText />
-    <small class="p-error block">Email is not available.</small>
+<!--    <small class="p-error block">Email is not available.</small>-->
   </div>
   <div class="field">
     <label for="password" class="block">Password</label>
     <input formControlName="password" id="password" type="password" pInputText />
-    <small class="p-error block">Email is not available.</small>
   </div>
-  <p-button (click)="onLogin()" label="Submit" icon="pi pi-check" iconPos="right"></p-button>
+  <p-button [disabled]="loginForm.invalid" (click)="onLogin()" label="Submit" icon="pi pi-check" iconPos="right"></p-button>
 </form>

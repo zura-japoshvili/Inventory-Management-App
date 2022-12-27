@@ -1,1 +1,44 @@
-<p>dashboard works!</p>
+<main>
+  <div class="sidebar">
+    <div class="top"></div>
+    <app-navigation></app-navigation>
+  </div>
+  <section class="dashboard-sec">
+    <header>
+      <h3>Welcome, <span>{{user.name}}.</span></h3>
+      <button pButton pRipple type="button" label="Log Out" class="p-button-raised p-button-danger"></button>
+    </header>
+    <hr>
+    <div class="inv-stats">
+      <div class="items tp">
+        <i class="pi pi-shopping-cart"></i>
+        <div>
+          <h6>Total Products</h6>
+          <p>10</p>
+        </div>
+      </div>
+      <div class="items tsv">
+        <i class="pi pi-dollar"></i>
+        <div>
+          <h6>Total Store Value</h6>
+          <p>5,000 $</p>
+        </div>
+      </div>
+      <div class="items out">
+        <i class="pi pi-sign-out"></i>
+        <div>
+          <h6>Out Of Stock</h6>
+          <p>3</p>
+        </div>
+      </div>
+      <div class="items all">
+        <i class="pi pi-microsoft"></i>
+        <div>
+          <h6>All Categories</h6>
+          <p>3</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+

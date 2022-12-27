@@ -5,6 +5,7 @@ import {LoginInt} from "../../../core/interfaces/loginInt";
 import {catchError, of, tap} from "rxjs";
 import {MessageService} from "primeng/api";
 import {Message} from "primeng/api";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -15,15 +16,17 @@ import {Message} from "primeng/api";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _userAuth: UserAuthService, private messageService: MessageService) { }
+  constructor(private _userAuth: UserAuthService,
+              private messageService: MessageService,
+              private _router: Router) { }
 
   ngOnInit(): void {
   }
 
 
   public loginForm = new FormGroup({
-    email: new FormControl("", Validators.required),
-    password: new FormControl("", Validators.required)
+    email: new FormControl("", [Validators.required, Validators.email]),
+    password: new FormControl("", [Validators.required, Validators.minLength(8)])
   })
 
   private showMessage(severity:string, summary: string, detail: string){
@@ -37,8 +40,7 @@ export class LoginComponent implements OnInit {
     this._userAuth.userLogin(this.loginForm.value as LoginInt).pipe(
       tap((value) => {
         localStorage.setItem("User", JSON.stringify(value))
-
-
+        this._router.navigateByUrl('/dashboard').then();
       }),
       catchError(err => {
         this.showMessage("error", err.status, err.error);

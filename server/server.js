@@ -13,6 +13,30 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 
+// Middlewares
+app.use(express.json());
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use(
+    cors({
+        origin: ["http://localhost:4200"],
+        credentials: true
+    })
+)
+
+
+// Routes Middleware
+app.use("/api/users/", userRoute);
+
+// Error Middleware
+app.use(errorHandler);
+
+// Routes
+app.get("/" , (req, res) => {
+    res.send("Home page");
+})
 
 // connecting to server and start server.
 mongoose.connect(process.env.MONGO_URI)
@@ -24,30 +48,3 @@ mongoose.connect(process.env.MONGO_URI)
     console.log("Server isn't running");
     console.log(error);
 });
-
-// Middlewares
-app.use(express.json());
-app.use(cookieParser());
-app.use(express.urlencoded({extended: false}));
-app.use(bodyParser.json());
-app.use(
-    cors({
-        origin: ["http://localhost:4200"],
-        credentials: true
-    })
-)
-
-// Routes Middleware
-app.use("/api/users/", userRoute);
-
-
-
-// Error Middleware
-app.use(errorHandler);
-
-// Routes
-app.get("/" , (req, res) => {
-    res.send("Home page");
-})
-
-
