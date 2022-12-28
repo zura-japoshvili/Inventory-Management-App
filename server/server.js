@@ -4,8 +4,10 @@ const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require('body-parser');
 const userRoute = require("./Routes/userRoutes");
+const productRoute = require('./Routes/productRoutes');
 const errorHandler = require("./middleWare/errorMiddleware");
 const cookieParser = require("cookie-parser");
+const path = require('path');
 
 
 const app = express();
@@ -26,9 +28,13 @@ app.use(
     })
 )
 
+// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+
 
 // Routes Middleware
 app.use("/api/users/", userRoute);
+app.use("/api/product/", productRoute);
 
 // Error Middleware
 app.use(errorHandler);
