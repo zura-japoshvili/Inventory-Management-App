@@ -1,1 +1,45 @@
-<p>product works!</p>
+<main>
+  <div class="side-bar">
+    <div class="top"></div>
+    <app-navigation></app-navigation>
+  </div>
+  <form [formGroup]="productForm">
+    <h2>New Product</h2>
+    <div class="field">
+       <span class="p-float-label">
+        <input formControlName="name" type="text" pInputText>
+        <label >Product Name</label>
+      </span>
+    </div>
+    <div class="field">
+       <span class="p-float-label">
+        <input formControlName="category" type="text" pInputText>
+        <label>Product Category</label>
+      </span>
+    </div>
+    <div class="field col-12 md:col-3">
+      <label>Product Price In USD</label>
+      <p-inputNumber formControlName="price" inputId="currency-us" mode="currency" currency="USD" locale="en-US">
+      </p-inputNumber>
+    </div>
+    <div class="field col-12 md:col-3">
+      <label>Product Quantity</label>
+      <p-inputNumber formControlName="quantity" mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="1">
+      </p-inputNumber>
+    </div>
+    <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+            <textarea formControlName="description" inputId="textarea" rows="5" style="resize: none;" cols="38"  pInputTextarea></textarea>
+            <label>Product Description</label>
+        </span>
+    </div>
+    <p-fileUpload [customUpload]="true" (uploadHandler)="onUpload($event)"
+                  accept="image/*">
+      <ng-template pTemplate="content">
+        <ul *ngIf="uploadedFiles">
+          <li>{{uploadedFiles.name}} - {{uploadedFiles.size}} bytes</li>
+        </ul>
+      </ng-template>
+    </p-fileUpload>
+  </form>
+</main>

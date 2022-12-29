@@ -13,6 +13,9 @@ import {NavigationComponent} from "./shared/navigation/navigation.component";
 import {PanelMenuModule} from "primeng/panelmenu";
 import {RippleModule} from "primeng/ripple";
 import {ButtonModule} from "primeng/button";
+import {InputTextModule} from "primeng/inputtext";
+import {InputNumberModule} from "primeng/inputnumber";
+import {FileUploadModule} from "primeng/fileupload";
 
 
 @NgModule({
@@ -32,7 +35,10 @@ import {ButtonModule} from "primeng/button";
     MessagesModule,
     PanelMenuModule,
     RippleModule,
-    ButtonModule
+    ButtonModule,
+    InputTextModule,
+    InputNumberModule,
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
