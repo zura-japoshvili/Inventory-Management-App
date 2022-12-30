@@ -4,16 +4,14 @@ const {fileSizeFormatter} = require("../utils/uploadFile");
 const cloudinary = require('../utils/uploadFile');
 
 const createProduct = AsyncHandler(async (req, res) => {
-    console.log("gaeshva")
-    const {name, sku, description, category, quantity, price} = req.body;
+    const {id, name, sku, description, category, quantity, price} = req.body;
 
     if(!name || !description || !category || !quantity || !price){
         res.status(400);
         throw new Error("Please fill in all fields");
     }
 
-    console.log(req.user.id)
-
+    console.log(id)
     if (req.file){
 
         fileData = {
@@ -23,10 +21,10 @@ const createProduct = AsyncHandler(async (req, res) => {
             fileSize: fileSizeFormatter(req.file.size, 2),
         };
 
-
+        console.log('before create')
         // Create Product
         const product = await Product.create({
-            user: req.user.id,
+            user: id,
             name,
             sku,
             category,
@@ -36,6 +34,7 @@ const createProduct = AsyncHandler(async (req, res) => {
             image: fileData,
         });
 
+        console.log(product)
         res.status(201).json(product);
     }else{
         res.status(500);

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ProductService} from "../../core/services/product.service";
+import {FullUserData} from "../../core/interfaces/fullUserData";
 
 
 @Component({
@@ -14,6 +15,8 @@ export class ProductComponent implements OnInit {
   constructor(private _product: ProductService) { }
 
   uploadedFiles!: File;
+
+  user: FullUserData = JSON.parse(localStorage.getItem('User')!);
 
   productForm = new FormGroup({
     name: new FormControl("", Validators.required),
@@ -33,6 +36,7 @@ export class ProductComponent implements OnInit {
     this.uploadedFiles = img;
     const {name, category, quantity, price, description} = this.productForm.value;
 
+    formData.set('id', this.user._id);
     formData.set("name", name!);
     formData.set("category", category!);
     formData.set("quantity", quantity!);

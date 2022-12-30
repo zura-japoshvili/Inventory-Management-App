@@ -24,6 +24,7 @@ app.use(bodyParser.json());
 app.use(
     cors({
         origin: ["http://localhost:4200", 'http://localhost:4200/newProduct'],
+        methods: ['GET', 'POST', "PUT", "GET", "DELETE", "PATCH"],
         credentials: true
     })
 )

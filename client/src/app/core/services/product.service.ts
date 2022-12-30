@@ -16,6 +16,9 @@ export class ProductService {
   }
 
   public newProduct (product: FormData): Observable<ProductInt>{
-    return this.http.post<ProductInt>("http://localhost:8000/api/product/newProduct", product, this.httpsOptions);
+    product.forEach((value, key) => {
+      console.log(`${key}: ${value}`);
+    });
+    return this.http.post<ProductInt>("http://localhost:8000/api/product/newProduct", product);
   }
 }
