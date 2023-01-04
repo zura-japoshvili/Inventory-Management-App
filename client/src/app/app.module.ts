@@ -16,6 +16,8 @@ import {ButtonModule} from "primeng/button";
 import {InputTextModule} from "primeng/inputtext";
 import {InputNumberModule} from "primeng/inputnumber";
 import {FileUploadModule} from "primeng/fileupload";
+import {TableModule} from "primeng/table";
+import {NgOptimizedImage} from "@angular/common";
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import {FileUploadModule} from "primeng/fileupload";
     ButtonModule,
     InputTextModule,
     InputNumberModule,
-    FileUploadModule
+    FileUploadModule,
+    TableModule,
+    NgOptimizedImage
   ],
   providers: [],
   bootstrap: [AppComponent]

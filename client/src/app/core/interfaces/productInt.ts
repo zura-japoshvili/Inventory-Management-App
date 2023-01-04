@@ -5,5 +5,10 @@ export interface ProductInt {
   price: string,
   quantity: string,
   description: string,
-  image?: string
+  image?: {
+    fileName: string
+    filePath: string
+    fileSize: string
+    fileType: string
+  }
 }

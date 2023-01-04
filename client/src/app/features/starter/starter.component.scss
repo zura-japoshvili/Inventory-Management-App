@@ -6,6 +6,8 @@ main{
     height: 80px;
     width: 100%;
     margin-bottom: 80px;
+    background-color: #41a687;
+    box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
     nav{
       height: 100%;
       display: flex;
@@ -17,15 +19,15 @@ main{
         color: #ffff;
         margin-right: 5px;
         cursor: pointer;
+        border-radius: 8px;
         padding: 5px 8px;
         border: none;
       }
       .login-btn{
         background-color: #1111dc;
-        border-radius: 8px;
       }
       .reg-btn{
-        background-color: rgba(1, 1, 107, 0);
+        background-color: #b9b70a;
       }
     }
   }

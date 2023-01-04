@@ -21,4 +21,9 @@ export class ProductService {
     });
     return this.http.post<ProductInt>("http://localhost:8000/api/product/newProduct", product);
   }
+
+  public getAllProduct(id: string): Observable<ProductInt[]>{
+    return this.http.get<ProductInt[]>("http://localhost:8000/api/product/getProducts/"+ id)
+  }
+
 }

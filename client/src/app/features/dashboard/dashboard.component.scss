@@ -81,5 +81,39 @@ main{
         }
       }
     }
+    .card{
+      .actions-part{
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        i{
+          font-size: 20px;
+          border-radius: 50%;
+          padding: 5px;
+          transition-duration: 0.5s;
+          cursor: pointer;
+          margin: 2.5px;
+          &.fa-pencil{
+            color: #5e5efc;
+            border: 3px solid #5e5efc;
+            &:hover{
+              background-color: #0f6ebd;
+              color: #ffffff;
+              transform: scale(1.5);
+            }
+          }
+          &.fa-trash-can{
+            color: #fd4343;
+            border: 3px solid #fd4343;
+            &:hover{
+              background-color: #fd4343;
+              color: #ffffff;
+              transform: scale(1.5);
+            }
+          }
+        }
+      }
+    }
   }
 }

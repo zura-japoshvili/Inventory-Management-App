@@ -39,11 +39,35 @@
         </div>
       </div>
     </div>
-
-    <form action="http://localhost:8000/api/product/newProduct" method="post">
-      <input type="file" name="image" id="image">
-      <button type="submit">Tap</button>
-    </form>
+    <div class="card">
+      <p-table [value]="allProduct" [tableStyle]="{'min-width': '60rem'}">
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="name" style="width:20%">Name <p-sortIcon field="name"></p-sortIcon></th>
+            <th pSortableColumn="image" style="width:20%">Image </th>
+            <th pSortableColumn="category" style="width:20%">Category <p-sortIcon field="category"></p-sortIcon></th>
+            <th pSortableColumn="quantity" style="width:20%">Quantity <p-sortIcon field="quantity"></p-sortIcon></th>
+            <th pSortableColumn="price" style="width:20%">Price <p-sortIcon field="price"></p-sortIcon></th>
+            <th pSortableColumn="description" style="width:20%">Description <p-sortIcon field="description"></p-sortIcon></th>
+            <th pSortableColumn="actions" style="width:20%">Actions </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+          <tr>
+            <td>{{product.name}}</td>
+            <td><img width="150" height="80" src="{{product.image.filePath}}"></td>
+            <td>{{product.category}}</td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.price | currency: 'USD'}}</td>
+            <td>{{product.description}}</td>
+            <td class="actions-part">
+              <i class="fa-solid fa-pencil"></i>
+              <i class="fa-regular fa-trash-can"></i>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
   </section>
 </main>
 

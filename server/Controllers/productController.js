@@ -34,7 +34,6 @@ const createProduct = AsyncHandler(async (req, res) => {
             image: fileData,
         });
 
-        console.log(product)
         res.status(201).json(product);
     }else{
         res.status(500);
@@ -42,7 +41,20 @@ const createProduct = AsyncHandler(async (req, res) => {
     }
 })
 
+// getting all products which owner is current user
+const getProducts = AsyncHandler(async  (req, res) => {
+    const {userId} = req.params;
+   if (userId){
+       const products = await Product.find({user: userId}).sort('createdAt');
+       res.status(200).json(products);
+   }else{
+       res.status(403)
+       throw new Error("Please authenticate");
+   }
+
+})
 
 module.exports = {
     createProduct,
+    getProducts
 }
