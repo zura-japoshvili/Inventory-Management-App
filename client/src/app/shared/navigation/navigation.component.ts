@@ -18,10 +18,12 @@ export class NavigationComponent implements OnInit {
     {
       label: 'Dashboard',
       icon: 'pi pi-fw pi-th-large',
+      url: '/dashboard'
     },
     {
       label: 'Add Product',
       icon: 'pi pi-fw pi-image',
+      url: '/newProduct'
     },
     {
       label: 'Account',

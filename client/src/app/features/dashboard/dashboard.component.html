@@ -1,4 +1,7 @@
 <main>
+  <div class="error-cont">
+    <p-messages></p-messages>
+  </div>
   <div class="sidebar">
     <div class="top"></div>
     <app-navigation></app-navigation>
@@ -6,7 +9,7 @@
   <section class="dashboard-sec">
     <header>
       <h3>Welcome, <span>{{user.name}}.</span></h3>
-      <button pButton pRipple type="button" label="Log Out" class="p-button-raised p-button-danger"></button>
+      <button (click)="logoutUser()" pButton pRipple type="button" label="Log Out" class="p-button-raised p-button-danger"></button>
     </header>
     <hr>
     <div class="inv-stats">
@@ -41,6 +44,7 @@
     </div>
     <div class="card">
       <p-table [value]="allProduct" [tableStyle]="{'min-width': '60rem'}">
+        <p-confirmPopup></p-confirmPopup>
         <ng-template pTemplate="header">
           <tr>
             <th pSortableColumn="name" style="width:20%">Name <p-sortIcon field="name"></p-sortIcon></th>
@@ -62,7 +66,7 @@
             <td>{{product.description}}</td>
             <td class="actions-part">
               <i class="fa-solid fa-pencil"></i>
-              <i class="fa-regular fa-trash-can"></i>
+              <i (click)="confirm($event, product._id)" class="fa-regular fa-trash-can"></i>
             </td>
           </tr>
         </ng-template>

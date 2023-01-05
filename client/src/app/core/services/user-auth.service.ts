@@ -5,13 +5,15 @@ import {Observable} from "rxjs";
 import {FullUserData} from "../interfaces/fullUserData";
 import {LoginInt} from "../interfaces/loginInt";
 import {ForgetPswdInt} from "../interfaces/forgetPswdInt";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserAuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private _router: Router) { }
 
   private httpsOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'}),
@@ -39,4 +41,12 @@ export class UserAuthService {
   public resetPassword(newPass: string, Token: string): Observable<{message: string}>{
     return this.http.put<{message: string}>("http://localhost:8000/api/users/resetPassword/"+ Token , {password: newPass});
   }
+
+  public logoutUser(){
+    this.http.get("http://localhost:8000/api/users/logout").subscribe((value) => {
+      localStorage.removeItem("User");
+      this._router.navigateByUrl('/auth/login').then();
+    });
+  }
+
 }

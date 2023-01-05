@@ -18,6 +18,7 @@ import {InputNumberModule} from "primeng/inputnumber";
 import {FileUploadModule} from "primeng/fileupload";
 import {TableModule} from "primeng/table";
 import {NgOptimizedImage} from "@angular/common";
+import {ConfirmPopupModule} from "primeng/confirmpopup";
 
 
 @NgModule({
@@ -28,22 +29,23 @@ import {NgOptimizedImage} from "@angular/common";
     ProductComponent,
     NavigationComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MessagesModule,
-    PanelMenuModule,
-    RippleModule,
-    ButtonModule,
-    InputTextModule,
-    InputNumberModule,
-    FileUploadModule,
-    TableModule,
-    NgOptimizedImage
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MessagesModule,
+        PanelMenuModule,
+        RippleModule,
+        ButtonModule,
+        InputTextModule,
+        InputNumberModule,
+        FileUploadModule,
+        TableModule,
+        NgOptimizedImage,
+        ConfirmPopupModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
