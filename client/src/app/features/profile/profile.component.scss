@@ -1,0 +1,28 @@
+main{
+  display: flex;
+  .sidebar{
+    width: 300px;
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #b9b7b7;
+    border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .top{
+      background-color: #133967;
+      height: 80px;
+      width: 100%;
+      margin-bottom: 8px;
+    }
+  }
+  .profile{
+    margin-left: 300px;
+    margin-top: 10px;
+    width: calc(100vw - 300px);
+    padding: 10px;
+  }
+}
+

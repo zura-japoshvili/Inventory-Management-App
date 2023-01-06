@@ -1,12 +1,20 @@
-import { NgModule } from '@angular/core';
+import {NavigationComponent} from "../navigation.component";
 import { CommonModule } from '@angular/common';
+import {NgModule} from "@angular/core";
+import {PanelMenuModule} from "primeng/panelmenu";
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    NavigationComponent
+  ],
+  exports: [
+    NavigationComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    PanelMenuModule,
   ]
 })
 export class NavigationModule { }

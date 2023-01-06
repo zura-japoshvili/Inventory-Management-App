@@ -87,9 +87,6 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  public logoutUser(){
-    this._userAuth.logoutUser()
-  }
 
   // for Dashboard Sorting
   public customSort(event: SortEvent) {

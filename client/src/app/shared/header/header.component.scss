@@ -1,0 +1,20 @@
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 5px;
+  h3{
+    font-weight: 700;
+    span{
+      color: #ee942a;
+    }
+  }
+}
+hr{
+  display: block;
+  height: 3px;
+  border: 0;
+  border-top: 1px solid #075aaf;
+  margin: 1em 0;
+  padding: 0;
+}

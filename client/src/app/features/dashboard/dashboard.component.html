@@ -7,11 +7,7 @@
     <app-navigation></app-navigation>
   </div>
   <section class="dashboard-sec">
-    <header>
-      <h3>Welcome, <span>{{user.name}}.</span></h3>
-      <button (click)="logoutUser()" pButton pRipple type="button" label="Log Out" class="p-button-raised p-button-danger"></button>
-    </header>
-    <hr>
+    <app-header></app-header>
     <div class="inv-stats">
       <div class="items tp">
         <i class="pi pi-shopping-cart"></i>

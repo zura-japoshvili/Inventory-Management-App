@@ -19,6 +19,8 @@ import {FileUploadModule} from "primeng/fileupload";
 import {TableModule} from "primeng/table";
 import {NgOptimizedImage} from "@angular/common";
 import {ConfirmPopupModule} from "primeng/confirmpopup";
+import {NavigationModule} from "./shared/navigation/navigation/navigation.module";
+import {HeaderModule} from "./shared/header/header/header.module";
 
 
 @NgModule({
@@ -27,25 +29,26 @@ import {ConfirmPopupModule} from "primeng/confirmpopup";
     StarterComponent,
     DashboardComponent,
     ProductComponent,
-    NavigationComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        MessagesModule,
-        PanelMenuModule,
-        RippleModule,
-        ButtonModule,
-        InputTextModule,
-        InputNumberModule,
-        FileUploadModule,
-        TableModule,
-        NgOptimizedImage,
-        ConfirmPopupModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MessagesModule,
+    PanelMenuModule,
+    RippleModule,
+    ButtonModule,
+    InputTextModule,
+    InputNumberModule,
+    FileUploadModule,
+    TableModule,
+    NgOptimizedImage,
+    ConfirmPopupModule,
+    NavigationModule,
+    HeaderModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
