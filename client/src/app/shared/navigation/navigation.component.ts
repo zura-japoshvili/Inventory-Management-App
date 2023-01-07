@@ -29,8 +29,8 @@ export class NavigationComponent implements OnInit {
       label: 'Account',
       icon: 'pi pi-fw pi-chart-bar',
       items: [
-        {label: 'Profile', icon: 'pi pi-fw pi-user'},
-        {label: 'Edit Profile', icon: 'pi pi-fw pi-user-edit'}
+        {label: 'Profile', icon: 'pi pi-fw pi-user', url: '/profile'},
+        {label: 'Edit Profile', icon: 'pi pi-fw pi-user-edit', url: '/profile/editProfile'}
       ]
     }
   ]

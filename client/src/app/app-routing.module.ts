@@ -11,7 +11,7 @@ const routes: Routes = [
     pathMatch: "full"
   },
   {
-    path: 'starter',
+    path: 'home',
     component: StarterComponent
   },
   {

@@ -33,9 +33,11 @@ main{
   }
   .starter-cont{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     .left{
       margin-right: 20px;
+      margin-bottom: 10px;
       h2{
         color: white;
         font-size: 50px;
@@ -50,6 +52,33 @@ main{
       img{
         width: 400px;
         height: 400px;
+        box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .starter-cont{
+    .left{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h2{
+        color: white;
+        font-size: 30px;
+        margin-top: 10px;
+      }
+      h5{
+        color: white;
+        font-size: 15px;
+        width: 80%;
+      }
+    }
+    .right{
+      img{
+        width: 300px;
+        height: 300px;
         box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
       }
     }

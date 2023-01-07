@@ -34,3 +34,8 @@ form{
     }
   }
 }
+@media screen and (max-width: 720px) {
+  form{
+    width: 80vw;
+  }
+}

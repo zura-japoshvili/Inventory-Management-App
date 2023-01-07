@@ -5,6 +5,17 @@
   </div>
   <section class="profile">
     <app-header></app-header>
+    <div class="personal-data">
+      <img src="{{user.photo}}">
+      <div class="data">
+        <h2><span class="key">Name:</span> <span class="value">{{user.name}}</span></h2>
+        <h4><span class="key">Email:</span> <span class="value">{{user.email}}</span></h4>
+        <h4><span class="key">Phone Number:</span> <span class="value">{{user.phone}}</span></h4>
+        <h6>Profile Bio</h6>
+        <hr>
+        <p>{{user.bio}}</p>
+      </div>
+    </div>
   </section>
 </main>
 <router-outlet></router-outlet>

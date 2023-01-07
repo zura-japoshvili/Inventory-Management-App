@@ -1,6 +1,6 @@
 form{
   padding: 30px;
-  width: 30vw;
+  width: 50vw;
   border-radius: 8px;
   background-color: #504533;
   box-shadow: 14px 10px 23px 0px rgba(0,0,0,0.75);
@@ -27,5 +27,11 @@ form{
     label{
       color: #ffff;
     }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  form{
+    width: 80vw;
   }
 }

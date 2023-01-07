@@ -128,7 +128,6 @@ const getUser = AsyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id);
     if (user){
         const {_id, name, email, photo, bio, phone } = user;
-
         res.status(201).json({
             _id,
             name,
@@ -136,7 +135,6 @@ const getUser = AsyncHandler(async (req, res) => {
             photo,
             bio,
             phone,
-            token
         });
     }else{
         res.status(400);

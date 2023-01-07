@@ -23,6 +23,62 @@ main{
     margin-top: 10px;
     width: calc(100vw - 300px);
     padding: 10px;
+    .personal-data{
+      width: 80%;
+      height: 400px;
+      background-color: #cbf6e6;
+      border-radius: 8px;
+      box-shadow: 10px 10px 10px 1px rgba(0, 0, 0, 0.47);
+      display: flex;
+      padding: 10px;
+      img{
+        margin-right: 20px;
+        width: 150px;
+        height: 150px;
+        background-color: #c0b0d2;
+        border-radius: 8px;
+      }
+      .data{
+        width: 70%;
+        h2, h4{
+          display: flex;
+          align-items: center;
+        }
+        h2, h4, p{
+          background-color: white;
+          height: 40px;
+          width: 90%;
+          border-radius: 8px;
+          display: flex;
+          margin-bottom: 10px;
+          .key{
+            background-color: #fcb83e;
+            border-radius: 8px;
+            height: 100%;
+            margin-right: 10px;
+            padding: 0 5px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+          }
+        }
+        h4{
+          font-size: 16px;
+        }
+        p{
+          min-height: 80px;
+          padding: 10px;
+        }
+        h6{
+          margin-top: 10px;
+          font-size: 20px;
+          color: #d4a3a3;
+        }
+        hr{
+          margin-bottom: 5px;
+        }
+      }
+    }
   }
 }
 
