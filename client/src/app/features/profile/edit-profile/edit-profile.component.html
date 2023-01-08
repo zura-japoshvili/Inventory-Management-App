@@ -1,1 +1,54 @@
-<p>edit-profile works!</p>
+<main>
+  <div class="error-cont">
+    <p-messages></p-messages>
+  </div>
+  <div class="sidebar">
+    <div class="top"></div>
+    <app-navigation></app-navigation>
+  </div>
+  <div class="data-wrapper">
+    <app-header></app-header>
+    <div class="top">
+      <form method="post" [formGroup]="editForm">
+        <span class="p-float-label">
+          <input formControlName="name" id="name" type="text" value="{{user.name}}"  pInputText>
+          <label for="name">Name</label>
+        </span>
+        <hr>
+        <label class="alert-label"><span class="red">*</span>Email can't be changed</label>
+        <input formControlName="email" id="disabled-input" type="text" value="{{user.email}}" pInputText/>
+        <hr>
+        <span class="p-float-label">
+          <input formControlName="phone" id="phone" type="text" value="{{user.phone}}"  pInputText>
+          <label for="phone">Phone Number</label>
+        </span>
+        <hr>
+        <span class="p-float-label">
+          <textarea formControlName="bio" id="float-input" rows="7" cols="40" pInputTextarea [value]="user.bio"></textarea>
+          <label for="float-input">Profile Bio</label>
+        </span>
+        <button (click)="editUserData()" pButton pRipple type="button" label="Edit Profile" class="p-button-rounded"></button>
+      </form>
+      <hr>
+      <div class="photo-cont">
+        <h2>Edit Profile Picture</h2>
+        <img src="{{user.photo}}">
+        <h5>Change Photo</h5>
+        <p-fileUpload mode="basic" accept="image/*" chooseLabel="Browse" (onUpload)="editImage($event)"></p-fileUpload>
+      </div>
+    </div>
+    <hr>
+    <div class="bottom">
+      <h2>Change Password</h2>
+      <form [formGroup]="passForm">
+        <h5>Current Password</h5>
+        <p-password formControlName="oldPassword" [feedback]="false"></p-password>
+        <h5>Repeat Password</h5>
+        <p-password formControlName="repeatPass" [feedback]="false"></p-password>
+        <h5>New Password</h5>
+        <p-password formControlName="newPassword" [toggleMask]="true"></p-password>
+        <button (click)="changePass()" pButton pRipple type="button" label="Change" class="p-button-raised p-button-help"></button>
+      </form>
+    </div>
+  </div>
+</main>

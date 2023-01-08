@@ -7,6 +7,11 @@ import {RippleModule} from "primeng/ripple";
 import {ButtonModule} from "primeng/button";
 import {HeaderModule} from "../../shared/header/header/header.module";
 import {NavigationModule} from "../../shared/navigation/navigation/navigation.module";
+import {InputTextModule} from "primeng/inputtext";
+import {InputTextareaModule} from "primeng/inputtextarea";
+import {FileUploadModule} from "primeng/fileupload";
+import {PasswordModule} from "primeng/password";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -32,7 +37,12 @@ import {NavigationModule} from "../../shared/navigation/navigation/navigation.mo
     RippleModule,
     ButtonModule,
     HeaderModule,
-    NavigationModule
+    NavigationModule,
+    InputTextModule,
+    InputTextareaModule,
+    FileUploadModule,
+    PasswordModule,
+    ReactiveFormsModule
   ]
 })
 export class ModuleModule { }

@@ -6,6 +6,7 @@ import {FullUserData} from "../interfaces/fullUserData";
 import {LoginInt} from "../interfaces/loginInt";
 import {ForgetPswdInt} from "../interfaces/forgetPswdInt";
 import {Router} from "@angular/router";
+import {ChangePass} from "../interfaces/changePass";
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,11 @@ export class UserAuthService {
 
   public resetPassword(newPass: string, Token: string): Observable<{message: string}>{
     return this.http.put<{message: string}>("http://localhost:8000/api/users/resetPassword/"+ Token , {password: newPass});
+  }
+
+  public changePassword(data: ChangePass): Observable<{message: string, status: string}>{
+    const {oldPassword, newPassword} = data;
+    return this.http.patch<{message: string, status: string}>("http://localhost:8000/api/users/changePassword", {oldPassword, newPassword}, this.httpsOptions)
   }
 
   public logoutUser(){

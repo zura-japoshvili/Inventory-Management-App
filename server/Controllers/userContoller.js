@@ -186,12 +186,13 @@ const changePassword = AsyncHandler( async (req, res) => {
     const user = await User.findById(req.user._id);
 
     const {oldPassword, newPassword} = req.body;
+
     if (!user){
         res.status(401)
         throw new Error("User not found, please login in or sign up");
     }
 
-    if(oldPassword || newPassword){
+    if(!oldPassword || !newPassword){
         res.status(400);
         throw new Error("Please fill in both fields");
     }
@@ -203,7 +204,7 @@ const changePassword = AsyncHandler( async (req, res) => {
     if (user && verifyPass){
         user.password = newPassword;
         await user.save();
-        res.status(200).send("Password is successfully changed");
+        res.status(200).send({message: "Password is successfully changed", status: "200"});
     }else{
         res.status(400);
         throw new Error("Password doesn't match ! ");
@@ -212,8 +213,7 @@ const changePassword = AsyncHandler( async (req, res) => {
 
 const forgetPassword = AsyncHandler(async (req, res) => {
     const {email} = req.body;
-    console.log(email)
-    console.log(req.body)
+
     const user = await User.findOne({email});
 
     if (!user){
@@ -264,7 +264,6 @@ const resetPassword = AsyncHandler(async (req, res) => {
     const {password} = req.body;
     const {resetToken} = req.params;
 
-    console.log(1312312)
     const hashedToken = crypto.createHash("sha256").update(resetToken).digest("hex");
 
     const userToken = await Token.findOne({
@@ -273,7 +272,6 @@ const resetPassword = AsyncHandler(async (req, res) => {
     });
 
     if (!userToken){
-        console.log(123)
         res.status(404);
         throw new Error("Invalid or expired token");
     }
