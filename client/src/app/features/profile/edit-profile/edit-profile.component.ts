@@ -20,9 +20,9 @@ export class EditProfileComponent implements OnInit {
   user: FullUserData = JSON.parse(localStorage.getItem('User')!)
 
   passForm = new FormGroup({
-    oldPassword: new FormControl("", [Validators.required]),
-    repeatPass: new FormControl("", Validators.required),
-    newPassword: new FormControl("", Validators.required)
+    oldPassword: new FormControl("", [Validators.required, Validators.minLength(8)]),
+    repeatPass: new FormControl("", [Validators.required, Validators.minLength(8)]),
+    newPassword: new FormControl("", [Validators.required, Validators.minLength(8)])
   })
   editForm = new FormGroup({
     name: new FormControl(this.user.name, Validators.required),
@@ -74,7 +74,23 @@ export class EditProfileComponent implements OnInit {
   }
 
 
-  public editImage(event: Event){
+  public editImage(event: { files: File[] }){
+    const img: File = event.files![0];
+    let formData = new FormData;
+
+    formData.set("image", img)
+
+    this._userData.changePhoto(formData).pipe(
+      tap((value) => {
+        this.user.photo = value.image;
+        localStorage.setItem("User", JSON.stringify(this.user));
+        this.showMessage("success", '200', value.message);
+      }),
+      catchError(err => {
+        this.showMessage("error", err.status, err.error);
+        return of ([]);
+      })
+    ).subscribe();
 
   }
 }

@@ -34,7 +34,7 @@
         <h2>Edit Profile Picture</h2>
         <img src="{{user.photo}}">
         <h5>Change Photo</h5>
-        <p-fileUpload mode="basic" accept="image/*" chooseLabel="Browse" (onUpload)="editImage($event)"></p-fileUpload>
+        <p-fileUpload mode="basic" accept="image/*" chooseLabel="Browse" [customUpload]="true" (uploadHandler)="editImage($event)"></p-fileUpload>
       </div>
     </div>
     <hr>

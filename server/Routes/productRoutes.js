@@ -6,7 +6,7 @@ const {upload} = require("../utils/uploadFile");
 
 
 
-router.post("/newProduct", protect,upload.single('image') , createProduct);
+router.post("/newProduct", protect, upload.single('image') , createProduct);
 router.get('/getProducts/:userId', protect ,getProducts);
 router.delete("/delete/:productId/:userId", protect, deleteProduct);
 

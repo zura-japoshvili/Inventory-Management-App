@@ -11,7 +11,6 @@ const createProduct = AsyncHandler(async (req, res) => {
         throw new Error("Please fill in all fields");
     }
 
-    console.log(id)
     if (req.file){
 
         fileData = {
@@ -21,7 +20,6 @@ const createProduct = AsyncHandler(async (req, res) => {
             fileSize: fileSizeFormatter(req.file.size, 2),
         };
 
-        console.log('before create')
         // Create Product
         const product = await Product.create({
             user: id,

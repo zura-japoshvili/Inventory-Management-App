@@ -6,6 +6,8 @@ const bcrypt = require("bcryptjs");
 const Token = require("../Models/tokenModel");
 const crypto = require("crypto");
 const sendEmail = require("../utils/sendEmail");
+const {Error} = require("mongoose");
+const {fileSizeFormatter} = require("../utils/uploadFile");
 
 
 const generateToken = (id) => {
@@ -159,10 +161,9 @@ const loginStatus = AsyncHandler( async (req, res) => {
 const updateUser = AsyncHandler( async (req, res) => {
     const user = await User.findById(req.user._id);
     if (user){
-        const {name, email, photo, bio, phone } = user;
+        const {name, email, bio, phone } = user;
             user.name = req.body.user || name;
             user.email = email;
-            user.photo = req.body.photo || photo;
             user.bio = req.body.bio || bio;
             user.phone = req.body.photo || phone;
 
@@ -172,7 +173,6 @@ const updateUser = AsyncHandler( async (req, res) => {
             _id: updateUser._id,
             name: updateUser.name,
             email: updateUser.email,
-            photo: updateUser.photo,
             bio: updateUser.bio,
             phone: updateUser.phone,
         });
@@ -285,6 +285,29 @@ const resetPassword = AsyncHandler(async (req, res) => {
     })
 })
 
+const changePhoto = AsyncHandler(async (req, res) => {
+    if (req.file){
+        fileData = {
+            fileName: req.file.originalname,
+            filePath: req.file.path,
+            fileType: req.file.mimetype,
+            fileSize: fileSizeFormatter(req.file.size, 2),
+        };
+
+        const user = await User.findById(req.user._id);
+
+        user.photo = fileData.filePath;
+
+        await user.save();
+
+        res.status(200).json({message: "Image is successfully updated", image: fileData.filePath});
+
+    }else{
+        res.status(500);
+        throw new Error("Image couldn't be uploaded");
+    }
+})
+
 
 module.exports = {
     registerUser,
@@ -295,5 +318,6 @@ module.exports = {
     updateUser,
     changePassword,
     forgetPassword,
-    resetPassword
+    resetPassword,
+    changePhoto
 }
