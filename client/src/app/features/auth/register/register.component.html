@@ -1,26 +1,27 @@
 <form method="post" [formGroup]="regForm">
   <h2>Registration</h2>
   <i class="fa-regular fa-user"></i>
+  <p>Already registered? <a routerLink="/auth/login">Sign In</a></p>
   <div class="field">
     <label for="email" class="block">Email</label>
     <input formControlName="email" id="email" type="email" placeholder="exaple@mail.com" pInputText />
-    <small class="p-error block">Email is not available.</small>
+    <small *ngIf="regForm?.get('email')?.errors && regForm?.get('email')?.touched" class="p-error block">Please enter a valid email</small>
   </div>
   <div class="field">
     <label class="block">Full name</label>
     <input formControlName="name" id="name" type="name" placeholder="William Shakespeare" pInputText />
-    <small class="p-error block">Email is not available.</small>
+    <small *ngIf="regForm?.get('name')?.errors && regForm?.get('name')?.touched"  class="p-error block">Name should contain only letters</small>
   </div>
   <div class="field">
     <label for="password" class="block">Password</label>
     <input formControlName="password" id="password" type="password" pInputText />
-    <small class="p-error block">Email is not available.</small>
+    <small *ngIf="regForm?.get('password')?.errors && regForm?.get('password')?.touched" class="p-error block">Password must contain at least 8 characters</small>
   </div>
   <div class="field">
     <label for="re_password" class="block">Repeat Password</label>
     <input formControlName="re_password" id="re_password" type="password" pInputText />
-    <small class="p-error block">Email is not available.</small>
+    <small *ngIf="regForm.errors?.['noMatch']" class="p-error block">Repeated password does not match</small>
   </div>
-  <p-button (click)="onRegister()" label="Submit" icon="pi pi-check" iconPos="right"></p-button>
+  <p-button (click)="regForm.invalid || onRegister()" label="Submit" icon="pi pi-check" iconPos="right" [disabled]="regForm.invalid"></p-button>
 </form>
 

@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {UserAuthService} from "../../../core/services/user-auth.service";
 import {catchError, of, tap} from "rxjs";
+import {passwordValidator} from "../../../core/Validator/password-validator";
 
 @Component({
   selector: 'app-reset-password',
@@ -28,8 +29,11 @@ export class ResetPasswordComponent implements OnInit {
 
   resetForm = new FormGroup({
     password: new FormControl("", [Validators.required, Validators.minLength(8)]),
-    repeat: new FormControl("", [Validators.required, Validators.minLength(8)])
-  })
+    re_password: new FormControl("", [Validators.required, Validators.minLength(8)])
+  },
+    {
+      validators: passwordValidator
+    })
 
   onClick(){
     this._userAuth.resetPassword(this.resetForm.get("password")!.value!, this.Token).pipe(

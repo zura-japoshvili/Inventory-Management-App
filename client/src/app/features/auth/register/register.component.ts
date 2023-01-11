@@ -20,10 +20,10 @@ export class RegisterComponent implements OnInit {
 
   public regForm =  new FormGroup(
     {
-      email: new FormControl("", Validators.required),
-      name: new FormControl("", Validators.required),
-      password: new FormControl("", Validators.required),
-      re_password: new FormControl("", Validators.required)
+      email: new FormControl("", [Validators.required, Validators.email]),
+      name: new FormControl("", [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]),
+      password: new FormControl("", [Validators.required, Validators.minLength(8)]),
+      re_password: new FormControl("", [Validators.required, Validators.minLength(8)])
     },
     {
       validators: passwordValidator

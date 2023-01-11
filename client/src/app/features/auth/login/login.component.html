@@ -4,6 +4,8 @@
 <form method="post" [formGroup]="loginForm">
   <h2>Login</h2>
   <i class="fa-solid fa-arrow-right-to-bracket"></i>
+  <p>Don't have an account? <a routerLink="/auth/login">Sign Up</a></p>
+  <p>Forgot your password? <a routerLink="/auth/forgetPassword">click</a></p>
   <div class="field">
     <label for="email" class="block">Email</label>
     <input formControlName="email" id="email" type="email" placeholder="example@mail.com" pInputText />
@@ -13,5 +15,5 @@
     <label for="password" class="block">Password</label>
     <input formControlName="password" id="password" type="password" pInputText />
   </div>
-  <p-button [disabled]="loginForm.invalid" (click)="onLogin()" label="Submit" icon="pi pi-check" iconPos="right"></p-button>
+  <p-button [disabled]="loginForm.invalid" (click)="loginForm.invalid || onLogin()" label="Submit" icon="pi pi-check" iconPos="right"></p-button>
 </form>

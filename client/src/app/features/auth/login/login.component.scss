@@ -24,6 +24,15 @@ form{
   input{
     background-color: #a7f6e0;
   }
+  p{
+    margin-bottom: 10px;
+    color: #ffffff;
+    a{
+      cursor: pointer;
+      color: #0f6ebd;
+      text-decoration: underline #0f6ebd;
+    }
+  }
   div{
     display: flex;
     flex-direction: column;
